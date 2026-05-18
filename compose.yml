@@ -1,0 +1,26 @@
+services:
+
+  devops_postgres:
+    image: postgres:17-alpine
+    container_name: devops_postgres
+    ports:
+      - "5434:5432"
+    volumes:
+      - devops_postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+
+  devops_redis:
+    image: redis:8.6.3-alpine
+    container_name: devops_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./config/redis.conf:/usr/local/etc/redis/redis.conf
+
+  
+
+volumes:
+  devops_postgres_data:
