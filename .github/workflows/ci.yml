@@ -1,13 +1,15 @@
 name: CI Frontend
 
-# Se déclenche sur chaque push et chaque PR, toutes branches
+
 on:
   push:
     branches: ["master"]
 
-# On execute ces instructions
+
 jobs:
+
   mount_container:
+
     runs-on: ubuntu-latest
 
     steps:
@@ -15,5 +17,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Sudo apt update
+        uses: "sudo apt update"
+
       - name: Docker compose up
-        run: "docker compose up"
+        run: "docker compose up -d"
