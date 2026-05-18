@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Sudo apt update
-        uses: "sudo apt update"
+        run: "sudo apt update"
 
       - name: Docker compose up
         run: "docker compose up -d"
